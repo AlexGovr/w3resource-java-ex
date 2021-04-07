@@ -30,7 +30,6 @@ public class Ex17 {
     public static int to_int(int i) {
         int dg = digits(i);
         int res = 0;
-        System.out.println("dg: " + dg);
         for (int _i = 0; _i < dg; _i++) {
             res += (int) (Math.pow(2, _i) * get_digit(i, _i));
         }
