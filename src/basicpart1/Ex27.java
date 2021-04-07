@@ -8,8 +8,7 @@ public class Ex27 {
         Scanner input = new Scanner(System.in);
         System.out.println("Input octal number:");
         String num = input.next();
-        System.out.println(base_to_dec(num, 8));
-        num = dec_to_base(base_to_dec(num, 8), 16);
+        num = baseof_to_baseof(num, 8, 16);
         System.out.println("Hexademical number: " + num);
     }
 
@@ -18,7 +17,6 @@ public class Ex27 {
         int len = of_base.length();
         for (int i = 0; i < len; i++) {
             int _digit = get_digit(of_base.charAt(len-1-i));
-            System.out.println(_digit);
             res += (int) (Math.pow(base, i) * _digit);
         }
         return res;
@@ -57,5 +55,9 @@ public class Ex27 {
             }
         }
         return (int) (c - '0');
+    }
+
+    public static String baseof_to_baseof(String num, int basefrom, int baseto) {
+        return dec_to_base(base_to_dec(num, basefrom), baseto);
     }
 }
