@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Ex34 {
+public class Ex39 {
     
     public static void main(String args[]) {
         ArrayList<ArrayList> all_perms = new ArrayList();
