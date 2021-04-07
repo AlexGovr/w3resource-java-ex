@@ -17,7 +17,8 @@ public class Ex27 {
         int res = 0;
         int len = of_base.length();
         for (int i = 0; i < len; i++) {
-            int _digit = (int) (of_base.charAt(len-1-i) - '0');
+            int _digit = get_digit(of_base.charAt(len-1-i));
+            System.out.println(_digit);
             res += (int) (Math.pow(base, i) * _digit);
         }
         return res;
@@ -42,5 +43,19 @@ public class Ex27 {
             i /= base;
         }
         return of_base;
+    }
+
+    public static int get_digit(char c) {
+        if (c > '9') {
+            switch (c) {
+                case 'a': return 10;
+                case 'b': return 11;
+                case 'c': return 12;
+                case 'd': return 13;
+                case 'e': return 14;
+                case 'f': return 15;
+            }
+        }
+        return (int) (c - '0');
     }
 }
