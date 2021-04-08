@@ -1,9 +1,8 @@
 package basicpart1;
 
 import java.util.Scanner;
-import basicpart1.Ex27;
 
-public class Ex30{
+public class Ex30 {
     
     public static void main(String args[]) {
         Scanner input = new Scanner(System.in);

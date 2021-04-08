@@ -12,6 +12,6 @@ public class Ex12 {
         a = input.nextDouble();
         b = input.nextDouble();
         c = input.nextDouble();
-        System.our.println((a + b + c) / 3);
+        System.out.println((a + b + c) / 3);
     }
 }

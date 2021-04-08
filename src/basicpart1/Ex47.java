@@ -1,6 +1,5 @@
 package basicpart1;
 
-import java.util.Calendar;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 

@@ -1,6 +1,4 @@
-package basicpart1;
 
-import basicpart1.Ex48;
 
 public class Ex66 {
     
