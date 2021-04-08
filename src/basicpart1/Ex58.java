@@ -6,7 +6,7 @@ public class Ex58 {
     
     public static void main(String args[]) {
         Scanner input = new Scanner(System.in);
-        System.out.print("Input the first number : ");
+        System.out.print("Input text: ");
         StringBuilder txt = new StringBuilder(input.nextLine());
 
         txt.setCharAt(0, Character.toUpperCase(txt.charAt(0)));
@@ -21,3 +21,4 @@ public class Ex58 {
         System.out.println(txt);
     }
 }
+ 
