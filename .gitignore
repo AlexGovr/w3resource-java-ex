@@ -1,1 +1,3 @@
 *.class
+*.py
+__pycache__/
