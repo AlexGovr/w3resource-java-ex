@@ -1,3 +1,5 @@
 *.class
 *.py
+*.jar
 __pycache__/
+.vscode/
