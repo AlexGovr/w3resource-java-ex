@@ -1,4 +1,4 @@
-
+package basicpart1;
 
 public class Ex66 {
     
