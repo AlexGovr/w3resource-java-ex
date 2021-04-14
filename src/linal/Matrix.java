@@ -1,55 +1,37 @@
 package linal;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class Matrix {
     private final double[][] VALUES;
-    private final int WIDTH;
-    private final int HEIGHT;
-    private String asString;
-
-    public static void main(String[] args) {
-        double[] coords = {1, 2, 2};
-        Vector v = new Vector(coords);
-        coords[0] = 3;
-        coords[2] = 0;
-        Vector v1 = new Vector(coords);
-        System.out.println("Create vector v: " + v.toString());
-        System.out.println("Create vector v1: " + v1.toString());
-        System.out.println("Distance between v and v1: " + v1.distanceTo(v));
-        System.out.println("v1.abs(): " + v1.abs());
-        System.out.println("v1 equals v: " + v1.equals(v));
-        System.out.println("v1 equals v1: " + v1.equals(v1));
-        System.out.println("v1 - v: " + v1.difference(v));
-        System.out.println("v1 + v: " + v1.sum(v));
-    }
+    private final int SIZE;
+    private final String AS_STRING;
 
     public Matrix(double[][] values) throws IllegalArgumentException {
-        int height = values.length;
+        int size = values.length;
         int width = values[0].length;
+        if (width != size)
+            throw new IllegalArgumentException("matrix rows must be of the same length");
+
         String asStr = "";
         for (double[] ds : values) {
             if (ds.length != width)
                 throw new IllegalArgumentException("matrix rows must be of the same length");
-            asStr += Arrays.toString(values);
+            asStr += Arrays.toString(ds) + '\n';
         }
         this.VALUES = values.clone();
-        this.HEIGHT = height;
-        this.WIDTH = width;
-        this.asString = asStr;
+        this.SIZE = size;
+        this.AS_STRING = asStr;
     }
 
-    public int getWidth() {
-        return this.WIDTH;
-    }
-
-    public int getHeight() {
-        return this.HEIGHT;
+    public int getSize() {
+        return this.SIZE;
     }
 
     @Override
     public int hashCode() {
-        return this.asString.hashCode();
+        return this.AS_STRING.hashCode();
     }
 
     @Override
@@ -57,8 +39,8 @@ public class Matrix {
         this.checkSameSize((Matrix)other);
         if (this.getClass() != other.getClass()) return false;
         if (this == other) return true;
-        for (int i = 0; i < this.getHeight(); i++) {
-            for (int j = 0; j < this.getWidth(); j++) {
+        for (int i = 0; i < this.getSize(); i++) {
+            for (int j = 0; j < this.getSize(); j++) {
                 if (this.VALUES[i][j] != ((Matrix) other).getValue(i, j))
                     return false;
             }
@@ -68,14 +50,14 @@ public class Matrix {
 
     @Override
     public String toString() {
-        return String.format("Matrix(\n%s\n)", this.asString);
+        return String.format("Matrix(\n%s\n)", this.AS_STRING);
     }
 
     public Matrix sum(Matrix other) {
         this.checkSameSize(other);
-        double[][] values = new double[this.getHeight()][this.getWidth()];
-        for (int i = 0; i < this.getHeight(); i++) {
-            for (int j = 0; j < this.getWidth(); j++) {
+        double[][] values = new double[this.getSize()][this.getSize()];
+        for (int i = 0; i < this.getSize(); i++) {
+            for (int j = 0; j < this.getSize(); j++) {
                 values[i][j] = this.getValue(i, j) + other.getValue(i, j);
             }
         }
@@ -84,13 +66,69 @@ public class Matrix {
 
     public Matrix difference(Matrix other) {
         this.checkSameSize(other);
-        double[][] values = new double[this.getHeight()][this.getWidth()];
-        for (int i = 0; i < this.getHeight(); i++) {
-            for (int j = 0; j < this.getWidth(); j++) {
+        double[][] values = new double[this.getSize()][this.getSize()];
+        for (int i = 0; i < this.getSize(); i++) {
+            for (int j = 0; j < this.getSize(); j++) {
                 values[i][j] = this.getValue(i, j) - other.getValue(i, j);
             }
         }
         return new Matrix(values);
+    }
+
+    public double trace() {
+        double diagSum = 0;
+        for (int i = 0; i < this.getSize(); i++) {
+            diagSum += this.getValue(i, i);
+        }
+        return diagSum;
+    }
+
+    public Matrix transpose() {
+        int size = this.getSize();
+        double[][] values = new double[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                values[j][i] = this.getValue(i, j);
+            }
+        }
+        return new Matrix(values);
+    }
+
+    public Matrix mul(Matrix other) {
+        this.checkSameSize(other);
+        int size = this.getSize();
+        double[][] values = new double[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                for (int k = 0; k < size; k++) {
+                    values[i][j] += this.getValue(i, k) + other.getValue(k, j);
+                }
+            }
+        }
+        return new Matrix(values);
+    }
+
+    public double det() {
+        int[] rows = IntStream.range(0, this.getSize()).toArray();
+        return this.subDet(rows, 0);
+    }
+
+    private double subDet(int[] rows, int j0) {
+        int size = this.getSize();
+        if (j0 == size)
+            return 1;
+
+        double res = 0;
+        int sign = 1;
+        for (int i : rows) {
+            if (i != -1) {
+                int[] _rows = rows.clone();
+                _rows[i] = -1;
+                res += this.getValue(i, j0) * this.subDet(_rows, j0+1) * sign;
+                sign *= -1;
+            }
+        }
+        return res;
     }
 
     public double getValue(int i, int j) {
@@ -98,7 +136,7 @@ public class Matrix {
     }
 
     public void checkSameSize(Matrix other) throws IllegalArgumentException {
-        if (this.getWidth() != other.getWidth() || this.getHeight() != other.getHeight())
+        if (this.getSize() != other.getSize())
             throw new IllegalArgumentException("matrices must be of the same size");
     }
 }
