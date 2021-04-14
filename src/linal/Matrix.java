@@ -18,7 +18,7 @@ public class Matrix {
         for (double[] ds : values) {
             if (ds.length != width)
                 throw new IllegalArgumentException("matrix rows must be of the same length");
-            asStr += Arrays.toString(ds) + '\n';
+            asStr += Arrays.toString(ds) + "\n";
         }
         this.VALUES = values.clone();
         this.SIZE = size;
@@ -50,7 +50,7 @@ public class Matrix {
 
     @Override
     public String toString() {
-        return String.format("Matrix(\n%s\n)", this.AS_STRING);
+        return String.format("Matrix(\n%s)", this.AS_STRING);
     }
 
     public Matrix sum(Matrix other) {
