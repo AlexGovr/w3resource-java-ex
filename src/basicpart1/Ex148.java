@@ -4,13 +4,13 @@ import java.util.Scanner;
 import java.util.HashMap;
 
 public class Ex148 {
-    
+
     public static void main(String args[]) {
         Scanner input = new Scanner(System.in);
         HashMap<Integer, Integer> map = new HashMap<>();
 
         String s = input.next();
-        for (int i : s.toCharArray()) {
+        for (int i: s.toCharArray()) {
             if (map.containsKey(i)) 
                 map.put(i, map.get(i) + 1);
             else
