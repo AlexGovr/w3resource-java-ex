@@ -47,8 +47,11 @@ public class Ex146 {
                 depth++;
                 if (val < node.value)
                     node = node.left;
-                else
+                else if (val > node.value)
                     node = node.right;
+                // value is already in tree
+                else
+                    return;
             }
             if (val < prev.value)
                 prev.left = newnode;
@@ -65,9 +68,13 @@ public class Ex146 {
         public void vizualize() {
             this.root.visualize();
         }
+
+        public Node getRoot() {
+            return this.root;
+        }
     }
 
-    private static class Node {
+    public static class Node {
         private Node left;
         private Node right;
         private Node head;
@@ -91,6 +98,18 @@ public class Ex146 {
             System.out.println(this.value);
             if (right != null)
                 this.right.show();
+        }
+
+        public int getValue() {
+            return this.value;
+        }
+
+        public Node getLeft() {
+            return this.left;
+        }
+
+        public Node getRight() {
+            return this.right;
         }
     }
 }
