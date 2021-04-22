@@ -12,12 +12,12 @@ public class Point implements Comparable<Point> {
 
     @Override 
     public int hashCode() {
-        return (String.valueOf(this.X) + String.valueOf(this.Y)).hashCode();
+        return String.format("%s,%s", this.X, this.Y).hashCode();
     }
 
     @Override
     public boolean equals(Object other) {
-        if (other.getClass() != this.getClass()) return false;
+        if (other == null || other.getClass() != this.getClass()) return false;
         if (this == other) return true;
         return (this.X == ((Point) other).getX() && this.Y == ((Point) other).getY());
     }

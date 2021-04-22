@@ -20,9 +20,17 @@ public class Matrix {
                 throw new IllegalArgumentException("matrix rows must be of the same length");
             asStr += Arrays.toString(ds) + "\n";
         }
-        this.VALUES = values.clone();
+        this.VALUES = copy2dim(values);
         this.SIZE = size;
         this.AS_STRING = asStr;
+    }
+
+    private static double[][] copy2dim(double[][] arr) {
+        double[][] res = new double[arr.length][];
+        for (int i = 0; i < arr.length; i++) {
+            res[i] = Arrays.copyOf(arr[i], arr[i].length)
+        }
+        return res;
     }
 
     public int getSize() {
@@ -37,7 +45,7 @@ public class Matrix {
     @Override
     public boolean equals(Object other){
         this.checkSameSize((Matrix)other);
-        if (this.getClass() != other.getClass()) return false;
+        if (other == null || this.getClass() != other.getClass()) return false;
         if (this == other) return true;
         for (int i = 0; i < this.getSize(); i++) {
             for (int j = 0; j < this.getSize(); j++) {

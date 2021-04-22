@@ -13,12 +13,12 @@ public class Point3d implements Comparable<Point3d> {
 
     @Override 
     public int hashCode() {
-        return (String.valueOf(this.X) + String.valueOf(this.Y) + String.valueOf(this.Z)).hashCode();
+        return String.format("%s,%s,%s", this.X, this.Y, this.Z).hashCode();
     }
 
     @Override
     public boolean equals(Object other) {
-        if (other.getClass() != this.getClass()) return false;
+        if (other == null || other.getClass() != this.getClass()) return false;
         if (this == other) return true;
         double _x = ((Point3d) other).getX();
         double _y = ((Point3d) other).getY();

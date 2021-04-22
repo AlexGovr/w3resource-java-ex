@@ -6,7 +6,7 @@ public class Vector {
     private final double[] coords;
 
     public Vector(double[] coords) {
-        this.coords = coords.clone();
+        this.coords = Arrays.copyOf(coords, coords.length);
     }
 
     public int getSize() {
@@ -17,10 +17,10 @@ public class Vector {
     public int hashCode() {
         return Arrays.toString(this.coords).hashCode();
     }
-
+    
     @Override
     public boolean equals(Object other){
-        if (this.getClass() != other.getClass()) return false;
+        if (other == null || this.getClass() != other.getClass()) return false;
         if (this == other) return true;
         if (this.getSize() != ((Vector) other).getSize()) return false;
         for (int i = 0; i < coords.length; i++) {
