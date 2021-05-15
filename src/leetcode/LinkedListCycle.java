@@ -70,6 +70,21 @@ public class LinkedListCycle {
             node.next = null;
             return popped;
         }
+
+        public void setHead(Node n) {
+            this.head = n;
+        }
+
+        public String toStr() {
+            String out = "List(";
+            Node node = this.head;
+            while (node != null) {
+                out += node.val + ", ";
+                node = node.next;
+            }
+            return out + ")";
+        }
+
     }
 
     public static class Node {
