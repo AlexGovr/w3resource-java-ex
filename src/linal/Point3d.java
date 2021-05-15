@@ -28,15 +28,13 @@ public class Point3d implements Comparable<Point3d> {
 
     @Override
     public int compareTo(Point3d other) {
-        // compare by distance to (0, 0, 0)
-        double dist = distanceTo(origin);
-        double otherDist = other.distanceTo(origin);
-        if (dist > otherDist) {
-            return 1;
-        } else if (dist == otherDist) {
-            return 0;
+        if (this.X == other.X) {
+            if (this.Y == other.Y) {
+                return (int) (this.Z - other.Z);
+            }
+            return (int) (this.Y - other.Y); 
         }
-        return -1;
+        return (int)(this.X - other.X);
     }
 
     @Override

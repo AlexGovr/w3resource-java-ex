@@ -24,15 +24,8 @@ public class Point implements Comparable<Point> {
 
     @Override
     public int compareTo(Point other) {
-        // compare by distance to (0, 0)
-        double dist = distanceTo(origin);
-        double otherDist = other.distanceTo(origin);
-        if (dist > otherDist) {
-            return 1;
-        } else if (dist == otherDist) {
-            return 0;
-        }
-        return -1;
+        if (this.X == other.X) { return (int) (this.Y - other.Y); }
+        return (int)(this.X - other.X);
     }
 
     @Override
