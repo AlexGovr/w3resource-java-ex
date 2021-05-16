@@ -28,7 +28,7 @@ public class Matrix {
     private static double[][] copy2dim(double[][] arr) {
         double[][] res = new double[arr.length][];
         for (int i = 0; i < arr.length; i++) {
-            res[i] = Arrays.copyOf(arr[i], arr[i].length)
+            res[i] = Arrays.copyOf(arr[i], arr[i].length);
         }
         return res;
     }
@@ -39,7 +39,13 @@ public class Matrix {
 
     @Override
     public int hashCode() {
-        return this.AS_STRING.hashCode();
+        int h = 17;
+        for (double[] row : VALUES) {
+            for (double d : row) {
+                h += 31 * h + String.valueOf(d).hashCode();
+            }
+        }
+        return h;
     }
 
     @Override

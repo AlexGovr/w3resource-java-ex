@@ -12,7 +12,10 @@ public class Point implements Comparable<Point> {
 
     @Override 
     public int hashCode() {
-        return String.format("%s,%s", this.X, this.Y).hashCode();
+        int h = 17;
+        h += 31 * h + String.valueOf(this.X).hashCode();
+        h += 31 * h + String.valueOf(this.Y).hashCode();
+        return h;
     }
 
     @Override

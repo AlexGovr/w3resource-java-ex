@@ -23,6 +23,7 @@ public class testMatrix {
         System.out.println("m + m1:\n" + m.sum(m1).toString());
         System.out.println("m - m1:\n" + m.difference(m1).toString());
         System.out.println("m * m1:\n" + m.mul(m1).toString());
+        System.out.println("m hash code:\n" + m.hashCode());
         System.out.println();
     }
 }

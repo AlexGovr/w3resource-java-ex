@@ -13,7 +13,11 @@ public class Point3d implements Comparable<Point3d> {
 
     @Override 
     public int hashCode() {
-        return String.format("%s,%s,%s", this.X, this.Y, this.Z).hashCode();
+        int h = 17;
+        h += 31 * h + String.valueOf(this.X).hashCode();
+        h += 31 * h + String.valueOf(this.Y).hashCode();
+        h += 31 * h + String.valueOf(this.Z).hashCode();
+        return h;
     }
 
     @Override

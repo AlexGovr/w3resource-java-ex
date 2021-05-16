@@ -15,7 +15,11 @@ public class Vector {
 
     @Override
     public int hashCode() {
-        return Arrays.toString(this.coords).hashCode();
+        int h = 17;
+        for (double d : coords) {
+            h += 31 * h + String.valueOf(d).hashCode();
+        }
+        return h;
     }
     
     @Override
