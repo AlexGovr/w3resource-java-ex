@@ -72,6 +72,10 @@ public class Ex146 {
         public Node getRoot() {
             return this.root;
         }
+
+        public void setRoot(Node n) {
+            this.root = n;
+        }
     }
 
     public static class Node {
@@ -110,6 +114,14 @@ public class Ex146 {
 
         public Node getRight() {
             return this.right;
+        }
+
+        public void setLeft(Node n) {
+            this.left = n;
+        }
+
+        public void setRight(Node n) {
+            this.right = n;
         }
     }
 }
