@@ -1,7 +1,5 @@
 package basicpart1;
 
-import basicpart1.Ex146;
-
 public class Ex150 {
     
     public static void main(String args[]) {

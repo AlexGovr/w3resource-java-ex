@@ -2,8 +2,6 @@ package basicpart2;
 
 import java.util.Scanner;
 import basicpart1.Ex48;
-import basicpart2.Ex155;
-import basicpart2.Ex157;
 
 public class Ex158 {
     

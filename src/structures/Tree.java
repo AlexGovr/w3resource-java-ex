@@ -3,7 +3,6 @@ package structures;
 // This code is taken from https://javarush.ru/groups/posts/3111-strukturih-dannihkh-dvoichnoe-derevo-v-java
 
 import java.util.Stack;
-import structures.Node;
 
 public class Tree {
     private Node rootNode; // корневой узел

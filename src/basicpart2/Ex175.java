@@ -1,9 +1,7 @@
 package basicpart2;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
-import basicpart1.Ex64.NotInRangeException;
 import leetcode.LinkedListCycle.LL;
 import leetcode.LinkedListCycle.Node;
 

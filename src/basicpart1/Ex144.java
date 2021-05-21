@@ -1,6 +1,5 @@
 package basicpart1;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Ex144 {

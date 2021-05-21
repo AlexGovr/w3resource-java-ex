@@ -1,7 +1,6 @@
 package basicpart2;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Ex172 {
     public static void main(String[] args) {
