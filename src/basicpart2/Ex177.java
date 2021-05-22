@@ -29,8 +29,8 @@ public class Ex177 {
     private static Node _clone_node(Node n) {
         if (n == null) return null;
         Node nodeclone = new Node(n.getValue());
-        nodeclone.setLeft(n.getLeft());
-        nodeclone.setRight(n.getRight());
+        nodeclone.setLeft(_clone_node(n.getLeft()));
+        nodeclone.setRight(_clone_node(n.getRight()));
         return nodeclone;
     }
 }
